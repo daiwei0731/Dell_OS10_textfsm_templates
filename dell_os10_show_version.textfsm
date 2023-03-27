@@ -1,0 +1,18 @@
+Value os_version (\S+)
+Value build_version (\S+)
+Value build_time (\S+)
+Value sys_type (\S+)
+Value Arch (\S+)
+Value up_time (.+)
+
+Start
+  ^Dell EMC Networking OS10 Enterprise -> Infor
+
+Infor
+  ^OS Version: ${os_version}
+  ^Build Version: ${build_version}
+  ^Build Time: ${build_time}
+  ^System Type: ${sys_type}
+  ^Architecture: ${Arch}
+  ^Up Time: ${up_time}
+  ^$$ -> Record

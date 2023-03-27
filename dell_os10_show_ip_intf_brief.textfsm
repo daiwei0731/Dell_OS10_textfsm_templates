@@ -1,0 +1,14 @@
+Value intf_name (\S+\s\S+)
+Value ip_addr (\S+)
+Value ok (\S+)
+Value method (\S+)
+Value stats (up|admin down)
+Value proto (up|down)
+
+Start
+  ^Interface Name            IP-Address          OK       Method       Status     Protocol -> Interface
+
+Interface
+  ^Eth \S+ -> Continue.Record
+  ^${intf_name}\s+${ip_addr}\s+${ok}\s+${method}\s+${stats}\s+${proto} -> Record
+
